@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: imps-mutating-webhook-configmap
+  namespace: kube-system
+data:
+  pull-secret-ref: <PULL_SECRET_NAME>
