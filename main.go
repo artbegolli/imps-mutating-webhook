@@ -74,7 +74,8 @@ func main() {
 	http.HandleFunc("/mutate", HandleServiceAccountMutate)
 	http.HandleFunc("/ping", HandlePing)
 	fmt.Println("Listening for requests on :443")
-	if err := http.ListenAndServeTLS(":443", "crts/tls.crt", "crts/tls.key", nil); err != nil {
+	if err := http.ListenAndServeTLS(":443", "/crts/tls.crt", "/crts/tls.key", nil); err != nil {
+		panic("error starting TLS server" + err.Error())
 		return
 	}
 
