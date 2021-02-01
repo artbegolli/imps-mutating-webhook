@@ -1,8 +1,11 @@
 # builder image
-FROM golang:1.15-alpine3.11 as builder
+FROM golang:1.15 as builder
 RUN mkdir /build
-ADD *.go /build/
 WORKDIR /build
+ADD *.go /build/
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux go build -a -o imps-mutating-webhook .
 
 # generate clean, final image for end users
