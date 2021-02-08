@@ -25,7 +25,7 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
-        run: echo "${{ secrets.DOCKERHUB_PASS }}" | docker -u abegolli --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_PASS }}" | docker login -u abegolli --password-stdin
 
       - name: Push image
         run: |
