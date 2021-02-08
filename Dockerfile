@@ -2,6 +2,7 @@
 FROM golang:1.15 as builder
 RUN mkdir /build
 WORKDIR /build
+ENV GO111MODULE=on
 ADD *.go /build/
 COPY go.mod .
 COPY go.sum .
